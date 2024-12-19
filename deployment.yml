@@ -1,11 +1,12 @@
 apiVersion: apps/v1
-kind: Deloyment
+kind: Deployment
 metadata:
   name: deploy-test01
 spec:
   replicas: 3
   selector:
-    app.kubernetes.io/name: web-deploy
+    matchLabels:
+      app.kubernetes.io/name: web-deploy
   template:
     metadata:
       labels:
@@ -14,4 +15,3 @@ spec:
       containers:
       - name: nginx
         image: nginx:1.24
-
